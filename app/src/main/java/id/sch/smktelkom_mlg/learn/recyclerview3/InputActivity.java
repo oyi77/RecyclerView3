@@ -42,12 +42,21 @@ public class InputActivity extends AppCompatActivity {
             }
         });
 
+
         findViewById(R.id.buttonSimpan).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 doSave();
             }
         });
+
+        hotel = (Hotel) getIntent().getSerializableExtra(MainActivity.HOTEL);
+        if (hotel != null) {
+            setTitle("Edit " + hotel.judul);
+            fillData();
+        } else {
+            setTitle("New Hotel");
+        }
 
         hotel = (Hotel) getIntent().getSerializableExtra(MainActivity.HOTEL);
         if (hotel != null) {
